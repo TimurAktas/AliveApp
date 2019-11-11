@@ -17,13 +17,11 @@ android {
   aaptOptions {
     additionalParameters "--no-version-vectors"
   }
-  project.ext {
-    googlePlayServicesVersion = "+"
-}
 }
 
 project.ext {
     googlePlayServicesVersion = "+"
+    
 }
 def settingsGradlePath
 
