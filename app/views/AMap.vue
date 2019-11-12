@@ -1,5 +1,5 @@
 <template>
-<Page>
+<Page actionBarHidden="true">
 <GridLayout columns="*" rows="*">
     <StackLayout>
       
@@ -23,7 +23,6 @@
           @markerInfoWindowTapped="markerInfoWindowTapped"
           @onCameraMove="onCameraMove"
         />
-         <Button  class="testtext" >Event starten</Button>
       </AbsoluteLayout>
     
     </StackLayout>
@@ -101,7 +100,7 @@ export default {
 </script>
 
 
-<style>
+<style scoped>
 Button{
   color:white;
 }
@@ -137,7 +136,7 @@ WrapLayout {
 }
 WrapLayout Button {
   font-size: 10;
-  background-color: white;
+
   color:black;
   width: 33.33333%;
   height: 80;

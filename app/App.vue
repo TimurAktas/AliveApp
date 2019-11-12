@@ -1,5 +1,6 @@
 <template>
-  <Page actionBarHidden="true" androidStatusBarBackground="#474747">
+  <Page actionBarHidden="false" >
+    <ActionBar title="Alive v1.0 " flat="true" />
     <GridLayout>
         <Frame id="app-root">
             <News />
@@ -32,7 +33,8 @@ export default {
     actionFrameLoaded(args){
       const frame = args.object;
 
-      frame.translateY = screen.mainScreen.heightDIPs -120
+      frame.translateY = screen.mainScreen.heightDIPs -190
+
     }
   }
 };

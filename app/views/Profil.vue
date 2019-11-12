@@ -1,5 +1,5 @@
 <template>
-      <Page>
+      <Page actionBarHidden="true">
        <StackLayout>
            <label text="Hier ist Prooooofil Page" class="page-name" />
 

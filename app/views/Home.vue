@@ -1,7 +1,7 @@
 <template>
-    <Page>
+    <Page actionBarHidden="true">
        <StackLayout>
-           <label text="Hier ist Home Page" class="page-name" />
+           <label text="Hier ist Home Page!!!!" class="page-name" />
 
        </StackLayout>
     </Page>
