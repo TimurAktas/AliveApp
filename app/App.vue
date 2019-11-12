@@ -1,21 +1,23 @@
 <template>
   <Page actionBarHidden="true" androidStatusBarBackground="#474747">
     <GridLayout>
-        <Frame id="home-page">
-            <HomePage />
+        <Frame id="app-root">
+            <News />
         </Frame>
 
         <Frame @loaded="actionFrameLoaded">
-          <ActionPage />
+          <BottomNavbar />
         </Frame>
     </GridLayout>
   </Page>
 </template>
 
 <script>
-import HomePage from './views/HomePage'
-import ActionPage from './views/ActionPage'
+
+import BottomNavbar from './views/BottomNavbar'
+import News from './views/News'
 import { screen } from 'tns-core-modules/platform'
+
 export default {
   data() {
     return {
@@ -23,8 +25,8 @@ export default {
     }
   },
   components:{
-    HomePage,
-    ActionPage
+    BottomNavbar,
+    News
   },
   methods:{
     actionFrameLoaded(args){

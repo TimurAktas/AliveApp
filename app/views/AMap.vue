@@ -1,4 +1,5 @@
 <template>
+<Page>
 <GridLayout columns="*" rows="*">
     <StackLayout>
       
@@ -27,6 +28,7 @@
     
     </StackLayout>
 </GridLayout>
+</Page>
 </template>
 
 <script>
