@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "664383075601",
+    "firebase_url": "https://alive-19.firebaseio.com",
+    "project_id": "alive-19",
+    "storage_bucket": "alive-19.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:664383075601:android:766ee53b98406ea8ee08b0",
+        "android_client_info": {
+          "package_name": "org.nativescript.application"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "664383075601-p7bqr8b8pc8mvopfkflufor09fnctrro.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAdNISIrv889DQN7rxF8IoS9VogpZBM8iw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "664383075601-p7bqr8b8pc8mvopfkflufor09fnctrro.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "664383075601-r43jin283det0f17tj800v5ngg2iq5d0.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.nativescript.alive"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
