@@ -1,41 +1,78 @@
-<template>
-  <Page actionBarHidden="false" >
-    <ActionBar title="Alive v1.0 " flat="true" />
-    <GridLayout>
-        <Frame id="app-root">
-            <News />
-        </Frame>
+<template lang="html">
+    <BottomNavigation>
+        <TabStrip>
+            <TabStripItem>
+                <Label text="Home"></Label>
+            </TabStripItem>
+            <TabStripItem>
+                <Label text="Map"></Label>
+            </TabStripItem>
+            <TabStripItem>
+                <Label text="newEvent"></Label>
+            </TabStripItem>
+             <TabStripItem>
+                <Label text="News"></Label>
+            </TabStripItem>
+            <TabStripItem>
+                <Label text="Profil"></Label>
+            </TabStripItem>
+        </TabStrip>
 
-        <Frame @loaded="actionFrameLoaded">
-          <BottomNavbar />
-        </Frame>
-    </GridLayout>
-  </Page>
+        <TabContentItem>
+            <Frame>
+                <Home />
+            </Frame>
+        </TabContentItem>
+
+        <TabContentItem>
+            <Frame>
+                <AMap />
+            </Frame>
+        </TabContentItem>
+
+        <TabContentItem>
+            <Frame>
+                <Home />
+            </Frame>
+        </TabContentItem>
+
+          <TabContentItem>
+            <Frame>
+                <Home />
+            </Frame>
+        </TabContentItem>
+
+         <TabContentItem>
+            <Frame>
+                <Home />
+            </Frame>
+        </TabContentItem>
+
+    </BottomNavigation>
 </template>
-
 <script>
 
-import BottomNavbar from './views/BottomNavbar'
-import News from './views/News'
-import { screen } from 'tns-core-modules/platform'
+import AMap from './views/AMap'
+import Home from './views/Home'
+
 
 export default {
+  
   data() {
     return {
     
     }
   },
   components:{
-    BottomNavbar,
-    News
+    Home,
+    AMap
   },
   methods:{
-    actionFrameLoaded(args){
-      const frame = args.object;
-
-      frame.translateY = screen.mainScreen.heightDIPs -190
-
-    }
+    
   }
 };
 </script>
+
+<style>
+
+</style>

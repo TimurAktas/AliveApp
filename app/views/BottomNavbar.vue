@@ -96,7 +96,7 @@ export default {
 <style>
 Button{
     width: 20%;
-
+    background-color: white;
 }
 
 
