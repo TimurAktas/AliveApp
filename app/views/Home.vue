@@ -1,6 +1,7 @@
 <template>
     <Page actionBarHidden="true">
        <StackLayout>
+           <TimeBar />
            <label text="Hier ist Home Pageeeee" class="page-name" />
            <Button text="Logout" @tap="Logout" />
        </StackLayout>
@@ -9,10 +10,12 @@
 
 <script>
 import Login from './Login'
+import TimeBar from '../components/Events/TimeBar'
 import store from '../store/store'
 export default {
      components:{
         Login,
+        TimeBar
     },
     methods:{
      Logout(){

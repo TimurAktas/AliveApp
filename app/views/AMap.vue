@@ -5,11 +5,7 @@
       
 
       <AbsoluteLayout>
-        <WrapLayout horizontalAlignment="center">
-          <Button class="datePicker">Heute 100</Button>
-          <Button class="datePicker">Morgen</Button>
-          <Button class="datePicker">Datum</Button>
-        </WrapLayout>
+        <TimeBar />
         <MapView
           width="100%"
           height="100%"
@@ -37,9 +33,12 @@ import { Accuracy } from "ui/enums";
 import * as platform from "platform";
 import * as decodePolyline from "decode-google-map-polyline";
 import { Position, Marker, Polyline, Bounds } from "nativescript-google-maps-sdk";
-
+import TimeBar from '../components/Events/TimeBar'
 
 export default {
+  components:{
+    TimeBar,
+  },
   data() {
     return {
       origin: { latitude: 51.52606121615919 , longitude:  7.551778592169285 },

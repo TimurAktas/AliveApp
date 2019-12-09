@@ -1,4 +1,4 @@
 dependencies {
-	def googlePlayServicesVersion = project.googlePlayServicesVersion
+	def googlePlayServicesVersion = project.hasProperty('googlePlayServicesVersion') ? project.googlePlayServicesVersion : '16.0.0'
 	compile "com.google.android.gms:play-services-location:$googlePlayServicesVersion"
 }

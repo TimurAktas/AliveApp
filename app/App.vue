@@ -3,18 +3,23 @@
         <TabStrip>
             <TabStripItem>
                 <Label text="Home"></Label>
+                <Image src.decode="font://&#xf015;" class="fa t-36"></Image>
             </TabStripItem>
             <TabStripItem>
                 <Label text="Map"></Label>
+                <Image src.decode="font://&#xf015;" class="fa t-36"></Image>
             </TabStripItem>
             <TabStripItem>
                 <Label text="newEvent"></Label>
+                <Image src.decode="font://&#xf015;" class="fa t-36"></Image>
             </TabStripItem>
              <TabStripItem>
                 <Label text="News"></Label>
+                <Image src.decode="font://&#xf015;" class="fa t-36"></Image>
             </TabStripItem>
             <TabStripItem>
                 <Label text="Profil"></Label>
+                <Image src.decode="font://&#xf015;" class="fa t-36"></Image>
             </TabStripItem>
         </TabStrip>
 
@@ -32,19 +37,19 @@
 
         <TabContentItem>
             <Frame>
-                <Home />
+                <NewEvent />
             </Frame>
         </TabContentItem>
 
           <TabContentItem>
             <Frame>
-                <Home />
+                <News />
             </Frame>
         </TabContentItem>
 
          <TabContentItem>
             <Frame>
-                <Home />
+                <Profil />
             </Frame>
         </TabContentItem>
 
@@ -54,6 +59,10 @@
 
 import AMap from './views/AMap'
 import Home from './views/Home'
+import NewEvent from './views/NewEvent'
+import News from './views/News'
+import Profil from './views/Profil'
+
 
 
 export default {
@@ -65,14 +74,13 @@ export default {
   },
   components:{
     Home,
-    AMap
+    AMap,
+    NewEvent,
+    News,
+    Profil
   },
   methods:{
     
   }
 };
 </script>
-
-<style>
-
-</style>
