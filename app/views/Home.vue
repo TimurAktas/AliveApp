@@ -3,14 +3,17 @@
        <StackLayout>
            <TimeBar />
            	<GridLayout row="3" width="100%" backgroundColor="white">
-                <ListView for="item in listOfItems" @itemTap="onItemTap">
-                    <v-template >
-                            <StackLayout class="list-group-item">
-                                <Label :text="item.name" />
-                                <Label :text="item.nachname" />
-                            </StackLayout>
-                    </v-template>
-                </ListView>
+                <PullToRefresh @refresh="refreshList">
+                    <ListView for="item in listOfItems" @itemTap="onItemTap">
+                        <v-template >
+                                <StackLayout class="list-group-item">
+                                    <Label :text="item.from" />
+                                    <Label :text="item.desc" />
+                                    <button>Anfrage senden</button>
+                                </StackLayout>
+                        </v-template>
+                    </ListView>
+                </PullToRefresh>
             </GridLayout>
        </StackLayout>
     </Page>
@@ -20,31 +23,15 @@
 import Login from './Login'
 import TimeBar from '../components/Events/TimeBar'
 import store from '../store/store'
+import * as firebase from "nativescript-plugin-firebase/app";
+
 export default {
+    created(){
+        
+    },
     data(){
         return{
-            listOfItems:[
-                {
-                    name: "Event name",
-                    nachname: "Event Inhalt"
-                },
-                {
-                    name: "Event name",
-                    nachname: "Event Inhalt"
-                },
-                {
-                    name: "Event name",
-                    nachname: "Event Inhalt"
-                },
-                {
-                    name: "Event name",
-                    nachname: "Event Inhalt"
-                },
-                {
-                    name: "Event name",
-                    nachname: "Event Inhalt"
-                }
-            ]
+            listOfItems: [],
         }
     },
      components:{
@@ -58,7 +45,26 @@ export default {
         this.$navigateTo(Login);
      },
      onItemTap(){
-         console.log("wurde geklickt")
+         console.log("Wurde geklickt!")
+     },
+     refreshList(args) {
+        var pullRefresh = args.object;
+        const messages = firebase.firestore().collection("events");
+        messages.get().then(snapshot =>{
+            snapshot.forEach(doc=>{
+                console.log(`${doc.id} => ${JSON.stringify(doc.data())}`);
+                console.log(doc.data().from)
+                console.log(doc.data().desc)
+                this.listOfItems.unshift({
+                    from: doc.data().from,
+                    desc: doc.data().desc,
+                })
+            })
+        });
+        setTimeout(function() {
+            pullRefresh.refreshing = false;
+            
+        }, 1000);
      }
     }
 }
@@ -69,4 +75,26 @@ export default {
     height: 200;
     background-color: lightblue;
 }
+.my-button {
+    android-elevation: 4;
+    background-color: lightseagreen;
+    border-color: darkolivegreen;
+    border-radius: 20;
+    border-width: 1;
+    color: whitesmoke;
+    font-size: 18;
+    font-weight: bold;
+}
+
+.my-button:active {
+    android-elevation: 8;
+    background-color: whitesmoke;
+    border-color: darkolivegreen;
+    border-radius: 20;
+    border-width: 1;
+    color: lightseagreen;
+    font-size: 18;
+    font-weight: bold;
+}
+
 </style>

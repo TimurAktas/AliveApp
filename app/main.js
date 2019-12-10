@@ -6,21 +6,27 @@ import store from './store/store'
 // Prints Vue logs when --env.production is *NOT* set while building
 Vue.config.silent = false
 
+
+//Plugins implementierung
 Vue.registerElement('MapView', ()=> require('nativescript-google-maps-sdk').MapView)
+Vue.registerElement('PullToRefresh',() => require('@nstudio/nativescript-pulltorefresh').PullToRefresh);
 
 var firebase = require("nativescript-plugin-firebase");
- 
-firebase.init({
-  // Optionally pass in properties for database, authentication and cloud messaging,
-  // see their respective docs.
-}).then(
-    function () {
-      console.log("firebase.init done");
-    },
-    function (error) {
-      console.log("firebase.init error: " + error);
-    }
-);
+const application = require("tns-core-modules/application");
+
+application.on(application.launchEvent, (args) => {
+  firebase.init()
+    .then(
+      instance => {
+        console.log("firebase.init done");
+      },
+      error => {
+        console.log(`firebase.init error: ${error}`);
+      }
+    );
+  });
+
+
 
 new Vue({
   store,
