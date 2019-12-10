@@ -1,1 +1,1 @@
-{"appId":"org.nativescript.application","minSdkVersion":null,"targetSdkVersion":null}
+{"appId":"org.nativescript.application","minSdkVersion":21,"targetSdkVersion":28, "multiDexEnabled":true}
