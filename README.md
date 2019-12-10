@@ -1,4 +1,4 @@
-# NativeScript-Vue Application
+# alive - The new Generation of meeting other People
 
 > alive - Verbinde dich mit Leuten aus deiner Nachbarschaft!
 
