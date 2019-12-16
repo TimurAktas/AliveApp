@@ -34,6 +34,7 @@ import * as platform from "platform";
 import * as decodePolyline from "decode-google-map-polyline";
 import { Position, Marker, Polyline, Bounds } from "nativescript-google-maps-sdk";
 import TimeBar from '../components/Events/TimeBar'
+import * as firebase from "nativescript-plugin-firebase/app";
 
 export default {
   components:{
@@ -41,7 +42,7 @@ export default {
   },
   data() {
     return {
-      origin: { latitude: 51.52606121615919 , longitude:  7.551778592169285 },
+      origin: { latitude: 51.52606121615919 , longitude:  7.551778592169285 }, //Das ist der Punkt wo der Map Mittelpunkt sein soll.
       destination: { latitude: 0, longitude: 0 },
       journeyDetails: "Journey: Not started yet!!",
       allowExecution: false,
@@ -68,22 +69,22 @@ export default {
       
     },
     mapReady(args){
-     
-      
+      console.log("Map ist geladen!!")
+      const ref = firebase.firestore().collection("events");
       this.mapView = args.object;
 
-      // neuen Marker erstellen
-      var marker = new Marker();
-      marker.position = Position.positionFromLatLng(this.origin.latitude, this.origin.longitude)
-      marker.title = "Wir haben bock auf eine fette Hausparty!"
-      marker.snippet = "Wer bock hat einfach mal Anfrage schicken. Für Alkohol ist gesorgt (y)"
-      marker.userData = { name : "Timur", name2: "Ugur"}
-
-      // Marker Object übergeben
-      this.mapView.addMarker(marker);
-
-      console.log("Map ist geladen!!")
-     
+      ref.get().then(snapshot => {
+        snapshot.forEach(doc => {
+          // neuen Marker erstellen
+          var marker = new Marker();
+          marker.position = Position.positionFromLatLng(doc.data().lat, doc.data().lng)
+          marker.title = doc.data().title
+          marker.snippet = doc.data().desc
+          // Marker Object übergeben
+          this.mapView.addMarker(marker);
+          console.log(`${doc.data().title} => ${JSON.stringify(doc.data())}`);
+        });
+      });     
     },
     markerInfoWindowTapped(args){
       console.log("Hallo Ugur es geht")
@@ -114,7 +115,7 @@ MapView{
   z-index: -10;
 }
 WrapLayout {
-  width: 98%;
+  width: 100%;
   z-index: 10;
 }
 WrapLayout Button {

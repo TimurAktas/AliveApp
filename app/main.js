@@ -1,5 +1,6 @@
 import Vue from 'nativescript-vue'
 import App from './App'
+import Login from './views/Login'
 import store from './store/store'
 // import {getBoolean,setBoolean,getNumber,setNumber,getString,setString,hasKey,remove,clear} from "tns-core-modules/application-settings";
 
@@ -14,17 +15,27 @@ Vue.registerElement('PullToRefresh',() => require('@nstudio/nativescript-pulltor
 var firebase = require("nativescript-plugin-firebase");
 const application = require("tns-core-modules/application");
 
+
+
+
 application.on(application.launchEvent, (args) => {
-  firebase.init()
-    .then(
-      instance => {
-        console.log("firebase.init done");
-      },
-      error => {
-        console.log(`firebase.init error: ${error}`);
+  firebase.init({
+    onAuthStateChanged: function(data) { // optional but useful to immediately re-logon the user when they re-visit your app
+      console.log(data.loggedIn ? "Logged in to firebase" : "Logged out from firebase");
+      if(data.loggedIn){
+        store.dispatch("initUserData")
       }
-    );
-  });
+    }
+  })
+  .then(
+    instance => {
+      console.log("firebase.init done");
+    },
+    error => {
+      console.log(`firebase.init error: ${error}`);
+    }
+  );
+});
 
 
 

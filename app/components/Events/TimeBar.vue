@@ -1,9 +1,10 @@
 <template>
   <WrapLayout horizontalAlignment="center">
-          <Button class="datePicker">Heute</Button>
-          <Button class="datePicker">Morgen</Button>
-          <Button class="datePicker">Datum</Button>
-    </WrapLayout>
+    <StackLayout>
+      <label>Heute, 12.12.19</label>
+      <label>20 Events</label>
+    </StackLayout>
+  </WrapLayout>
 </template>
 
 <script>
@@ -13,22 +14,21 @@ export default {
 </script>
 
 <style>
-.datePicker {
-  /* background-color: rgb(53, 51, 51);
-  color:white; */
-  background-color: white;
-  color: black;
-}
+
 
 WrapLayout {
   width: 100%;
+  height: 100;
   z-index: 10;
+  background: linear-gradient(to left,#e66465, #9198e5);
 }
 WrapLayout Button {
   font-size: 10;
-
-  color:black;
   width: 33.33333%;
   height: 80;
+ 
 }
+
+
+
 </style>

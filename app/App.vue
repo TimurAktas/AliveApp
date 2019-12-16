@@ -43,13 +43,13 @@
 
           <TabContentItem>
             <Frame>
-                <News />
+                <Profil />
             </Frame>
         </TabContentItem>
 
          <TabContentItem>
             <Frame>
-                <Profil />
+                <Login />
             </Frame>
         </TabContentItem>
 
@@ -62,7 +62,7 @@ import Home from './views/Home'
 import NewEvent from './views/NewEvent'
 import News from './views/News'
 import Profil from './views/Profil'
-
+import Login from './views/Login'
 
 
 export default {
@@ -77,10 +77,16 @@ export default {
     AMap,
     NewEvent,
     News,
-    Profil
+    Profil,
+    Login
   },
   methods:{
     
   }
 };
 </script>
+
+
+<style>
+
+</style>

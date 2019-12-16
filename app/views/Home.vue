@@ -8,6 +8,7 @@
                         <v-template >
                                 <StackLayout class="list-group-item">
                                     <Label :text="item.from" />
+                                    <Label :text="item.title" />
                                     <Label :text="item.desc" />
                                     <button>Anfrage senden</button>
                                 </StackLayout>
@@ -48,8 +49,10 @@ export default {
          console.log("Wurde geklickt!")
      },
      refreshList(args) {
+        console.log("Refresht!!")
         var pullRefresh = args.object;
         const messages = firebase.firestore().collection("events");
+        this.listOfItems = [];
         messages.get().then(snapshot =>{
             snapshot.forEach(doc=>{
                 console.log(`${doc.id} => ${JSON.stringify(doc.data())}`);
@@ -57,13 +60,13 @@ export default {
                 console.log(doc.data().desc)
                 this.listOfItems.unshift({
                     from: doc.data().from,
+                    title: doc.data().title,
                     desc: doc.data().desc,
                 })
             })
         });
         setTimeout(function() {
             pullRefresh.refreshing = false;
-            
         }, 1000);
      }
     }

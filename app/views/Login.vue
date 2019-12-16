@@ -2,8 +2,13 @@
     <Page actionBarHidden="false" statusBarStyle="light">
        <ActionBar title="Alive v1.0 Login Bereich " flat="true" />
        <StackLayout>
-           <label text="Hier ist Home Page" class="page-name" />
-           <Button text="Login" @tap="logIn" />
+            <label >Email:</label>
+            <TextField ref="textField" v-model="email" borderBottomWidth="3" borderBottomColor="#cec8c8" padding="0" />
+            <label >Password:</label>
+	        <TextField ref="textField" v-model="password" borderBottomWidth="3" borderBottomColor="#cec8c8" padding="0" />
+           <Button text="Login" @tap="userLoginWithEmailandPassword" />
+           <Button text="Logout" @tap="logOut" />
+           <Button text="Register now" @tap="registerWithEmailandPassword" />
        </StackLayout>
     </Page>
 </template>
@@ -11,16 +16,42 @@
 <script>
 import App from '../App'
 import store from '../store/store'
+import firebase from "nativescript-plugin-firebase"
+import News from '../views/News'
+
 export default {
-    
+    data(){
+        return{
+            email: null,
+            password: null,
+            feedback: null,
+        }
+    },
     components:{
         App,
+        News
     },
     methods:{
-     logIn(){
-        store.dispatch("login")
-        console.log("Logge user ein!!!!! 888888888888888888888888888888888888")
-        this.$navigateTo(App);
+     userLoginWithEmailandPassword(){
+        console.log(this.email, this.password)
+        firebase.login({
+            type: firebase.LoginType.PASSWORD,
+            passwordOptions: {
+            email: `${this.email}`,
+            password: `${this.password}`
+            }
+        })
+        .then(result => {JSON.stringify(result)
+            console.log("Erfolgreich eingeloggt!")
+        })
+        .catch(error => console.log(error));
+     },
+     logOut(){
+        console.log("Logged out ---")
+        firebase.logout();
+     },
+     registerWithEmailandPassword(){
+
      }
     }
 }
