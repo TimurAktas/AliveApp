@@ -1,6 +1,8 @@
-# NativeScript-Vue Application
+# alive - The new Generation of meeting other People
 
-> A native application built with NativeScript-Vue
+> alive - Verbinde dich mit Leuten aus deiner Nachbarschaft!
+
+Du bist neu in der Stadt und kennst noch niemanden? alive hilft dir neue bekanntschafften zu machen.
 
 ## Usage
 
