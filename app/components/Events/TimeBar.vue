@@ -1,9 +1,9 @@
 <template>
-  <WrapLayout horizontalAlignment="center">
+  <WrapLayout>
     <StackLayout>
-      <label>Herzlich Willkommen {{userData.firstname}} </label>
-      <label>Heute, 12.12.19</label>
-      <label>20 Events</label>
+      <label class="text-center h3">Herzlich Willkommen {{userData.firstname}} </label>
+      <label class="text-center h3">Heute, 12.12.19</label>
+      <label class="text-center h3">{{countEvents}} Events</label>
     </StackLayout>
   </WrapLayout>
 </template>
@@ -14,12 +14,16 @@ import { mapGetters } from 'vuex'
 
 export default {
   computed: {
-    ...mapGetters(['userData'])
+    ...mapGetters(['userData', 'countEvents'])
   }
 }
 </script>
 
-<style>
+<style scoped>
+  StackLayout{
+    padding: 20;
+    width: 100%;
+  }
   WrapLayout {
     width: 100%;
     height: 150;

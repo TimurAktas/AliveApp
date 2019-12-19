@@ -15,6 +15,7 @@ export default new Vuex.Store({
   getters:{
     userData: state => state.userData,
     events: state => state.events,
+    countEvents: state => state.events.length,
     isLogged: state => state.isLogged
   },
   mutations: {
@@ -53,7 +54,7 @@ export default new Vuex.Store({
         });
     },
     getstateuserdata(){
-      console.log("Store userData -> ", this.state.userData)
+      console.log("Store userData --> ", this.state.userData)
       console.log("Store Events -> ", this.state.events)
       console.log("EVENTS IN STORE -> ", this.state.events.length)
     },

@@ -1,15 +1,16 @@
 <template lang="html" >
     <Frame id="main-root">
         <Page actionBarHidden="true" backgroundColor="#2A3551">
+
             <BottomNavigation>
                 <TabStrip>
                     <TabStripItem class="tabstripitem">
                         <Label text="Home"></Label>
-                        <Image src.decode="font://&#xf015;" class="fa t-36"></Image>
+                        <Image src="font://&#xf015;" class="fas t-36"></Image>
                     </TabStripItem>
                     <TabStripItem class="tabstripitem">
-                        <Label text="Map"></Label>
-                        <Image src.decode="font://&#xf015;" class="fa t-36"></Image>
+                        <Label text="Account"></Label>
+                        <Image src="font://&#xf007;" class="fas t-36"></Image>
                     </TabStripItem>
                     <TabStripItem class="tabstripitem">
                         <Label text="newEvent"></Label>
@@ -89,25 +90,18 @@ export default {
 
 <style>
 
-TabStripItem.tabstripitem {
+
+Tabs TabStripItem,
+BottomNavigation TabStripItem {
     background-color: #414B6E;
-}
-
-TabStripItem.tabstripitem:active {
-    background-color: #5F6A9A;
-} 
-
-label{
     color: white;
 }
 
-.fas {
-    font-family: "Font Awesome 5 Free", "fa-solid-900";
-    font-weight: 900;
+Tabs TabStripItem:active,
+BottomNavigation TabStripItem:active {
+    background-color: #5F6A9A;
+    color: gray;
 }
 
-.t-36 {
-    font-size: 36;
-}
 
 </style>

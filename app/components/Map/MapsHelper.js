@@ -1,7 +1,7 @@
-import * as http from "http";
+import * as http from "tns-core-modules/http";
 import * as geolocation from "nativescript-geolocation";
-import { Accuracy } from "ui/enums";
-import * as platform from "platform";
+import { Accuracy } from "tns-core-modules/ui/enums";
+import * as platform from "tns-core-modules/platform";
 import * as decodePolyline from "decode-google-map-polyline";
 import { Position, Marker, Polyline, Bounds } from "nativescript-google-maps-sdk";
 
