@@ -24,6 +24,7 @@ application.on(application.launchEvent, (args) => {
       console.log(data.loggedIn ? "Logged in to firebase" : "Logged out from firebase");
       if(data.loggedIn){
         store.dispatch("initUserData")
+        store.dispatch("loadEvents")
       }
     }
   })

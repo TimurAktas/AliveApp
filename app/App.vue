@@ -1,60 +1,65 @@
-<template lang="html">
-    <BottomNavigation>
-        <TabStrip>
-            <TabStripItem>
-                <Label text="Home"></Label>
-                <Image src.decode="font://&#xf015;" class="fa t-36"></Image>
-            </TabStripItem>
-            <TabStripItem>
-                <Label text="Map"></Label>
-                <Image src.decode="font://&#xf015;" class="fa t-36"></Image>
-            </TabStripItem>
-            <TabStripItem>
-                <Label text="newEvent"></Label>
-                <Image src.decode="font://&#xf015;" class="fa t-36"></Image>
-            </TabStripItem>
-             <TabStripItem>
-                <Label text="News"></Label>
-                <Image src.decode="font://&#xf015;" class="fa t-36"></Image>
-            </TabStripItem>
-            <TabStripItem>
-                <Label text="Profil"></Label>
-                <Image src.decode="font://&#xf015;" class="fa t-36"></Image>
-            </TabStripItem>
-        </TabStrip>
+<template lang="html" >
+    <Frame id="main-root">
+        <Page actionBarHidden="true" backgroundColor="#2A3551">
+            <BottomNavigation>
+                <TabStrip>
+                    <TabStripItem class="tabstripitem">
+                        <Label text="Home"></Label>
+                        <Image src.decode="font://&#xf015;" class="fa t-36"></Image>
+                    </TabStripItem>
+                    <TabStripItem class="tabstripitem">
+                        <Label text="Map"></Label>
+                        <Image src.decode="font://&#xf015;" class="fa t-36"></Image>
+                    </TabStripItem>
+                    <TabStripItem class="tabstripitem">
+                        <Label text="newEvent"></Label>
+                        <Image src.decode="font://&#xf015;" class="fa t-36"></Image>
+                    </TabStripItem>
+                    <TabStripItem class="tabstripitem">
+                        <Label text="News"></Label>
+                        <Image src.decode="font://&#xf015;" class="fa t-36"></Image>
+                    </TabStripItem>
+                    <TabStripItem class="tabstripitem">
+                        <Label text="Profil"></Label>
+                        <Image src.decode="font://&#xf015;" class="fa t-36"></Image>
+                    </TabStripItem>
+                </TabStrip>
 
-        <TabContentItem>
-            <Frame>
-                <Home />
-            </Frame>
-        </TabContentItem>
+                <TabContentItem>
+                    <Frame id="home-root"> 
+                        <Home />
+                    </Frame>
+                </TabContentItem>
 
-        <TabContentItem>
-            <Frame>
-                <AMap />
-            </Frame>
-        </TabContentItem>
+                <TabContentItem >
+                    <Frame id="map-root">
+                        <AMap />
+                    </Frame>
+                </TabContentItem>
 
-        <TabContentItem>
-            <Frame>
-                <NewEvent />
-            </Frame>
-        </TabContentItem>
+                <TabContentItem>
+                    <Frame>
+                        <NewEvent />
+                    </Frame>
+                </TabContentItem>
 
-          <TabContentItem>
-            <Frame>
-                <Profil />
-            </Frame>
-        </TabContentItem>
+                <TabContentItem>
+                    <Frame>
+                        <Login />
+                    </Frame>
+                </TabContentItem>
 
-         <TabContentItem>
-            <Frame>
-                <Login />
-            </Frame>
-        </TabContentItem>
+                <TabContentItem>
+                    <Frame>
+                    <Profil />
+                    </Frame>
+                </TabContentItem>
 
-    </BottomNavigation>
+            </BottomNavigation>
+        </Page>
+    </Frame>
 </template>
+
 <script>
 
 import AMap from './views/AMap'
@@ -66,10 +71,8 @@ import Login from './views/Login'
 
 
 export default {
-  
   data() {
     return {
-    
     }
   },
   components:{
@@ -80,13 +83,31 @@ export default {
     Profil,
     Login
   },
-  methods:{
-    
-  }
 };
 </script>
 
 
 <style>
+
+TabStripItem.tabstripitem {
+    background-color: #414B6E;
+}
+
+TabStripItem.tabstripitem:active {
+    background-color: #5F6A9A;
+} 
+
+label{
+    color: white;
+}
+
+.fas {
+    font-family: "Font Awesome 5 Free", "fa-solid-900";
+    font-weight: 900;
+}
+
+.t-36 {
+    font-size: 36;
+}
 
 </style>

@@ -1,7 +1,10 @@
 <template>
-    <Page actionBarHidden="true">
-       <StackLayout>
-            <label>Profil von {{userData.name}}</label>
+    <Page actionBarHidden="true" backgroundColor="#2A3551" >
+       <StackLayout >
+            <label>Profil von {{userData.firstname}}</label>
+            <label>{{userData.lastname}}</label>
+            <label>{{userData.age}}</label>
+            <label>{{userData.interests}}</label>
             <Button text="UserData" @tap="currentUser" />
        </StackLayout>
     </Page>
@@ -11,9 +14,7 @@
 import Login from './Login'
 import store from '../store/store'
 import { mapGetters } from 'vuex'
-import { mapState } from 'vuex'
-import * as firebase from "nativescript-plugin-firebase"
-import * as firestore from "nativescript-plugin-firebase/app"
+
 export default {
     created(){
         console.log('STORE USER DATA: ' , store.state.userData)
@@ -23,7 +24,6 @@ export default {
     },
     methods:{
      logout(){
-        
         store.dispatch("logout")
         this.$navigateTo(Login);
      },
@@ -31,7 +31,7 @@ export default {
         store.dispatch("getstateuserdata")
      }
     },
-   computed: {
+    computed: {
         ...mapGetters(['userData'])
     }
     

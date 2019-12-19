@@ -1,5 +1,5 @@
 <template>
-    <Page actionBarHidden="false" statusBarStyle="light">
+    <Page actionBarHidden="false" statusBarStyle="light" backgroundColor="#2A3551" >
        <ActionBar title="Alive v1.0 Login Bereich " flat="true" />
        <StackLayout>
             <label >Email:</label>

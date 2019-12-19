@@ -1,5 +1,5 @@
 <template>
-    <Page actionBarHidden="true" statusBarStyle="light">
+    <Page actionBarHidden="true" statusBarStyle="light" backgroundColor="#2A3551" >
         <StackLayout>
             <label >Titel des Events:</label>
             <TextField ref="textField" v-model="title" borderBottomWidth="3" borderBottomColor="#cec8c8" padding="0" />

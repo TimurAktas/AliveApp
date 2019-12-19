@@ -1,9 +1,6 @@
 <template>
-<Page actionBarHidden="true">
-<GridLayout columns="*" rows="*">
-    <StackLayout>
-      
-
+  <Page actionBarHidden="true">
+    <GridLayout columns="*" rows="*">
       <AbsoluteLayout>
         <TimeBar />
         <MapView
@@ -20,10 +17,8 @@
           @onCameraMove="onCameraMove"
         />
       </AbsoluteLayout>
-    
-    </StackLayout>
-</GridLayout>
-</Page>
+    </GridLayout>
+  </Page>
 </template>
 
 <script>
@@ -35,10 +30,13 @@ import * as decodePolyline from "decode-google-map-polyline";
 import { Position, Marker, Polyline, Bounds } from "nativescript-google-maps-sdk";
 import TimeBar from '../components/Events/TimeBar'
 import * as firebase from "nativescript-plugin-firebase/app";
+import GMapStyle from '../map-style.json';
+import EventInfo      from '../views/EventInfo'
 
 export default {
   components:{
     TimeBar,
+    EventInfo
   },
   data() {
     return {
@@ -69,10 +67,11 @@ export default {
       
     },
     mapReady(args){
+      
       console.log("Map ist geladen!!")
       const ref = firebase.firestore().collection("events");
       this.mapView = args.object;
-
+      this.mapView.setStyle(GMapStyle)
       ref.get().then(snapshot => {
         snapshot.forEach(doc => {
           // neuen Marker erstellen
@@ -87,7 +86,13 @@ export default {
       });     
     },
     markerInfoWindowTapped(args){
-      console.log("Hallo Ugur es geht")
+      console.log(args.marker)
+      this.$navigateTo(EventInfo, { 
+            frame: "main-root",
+            props: {
+                event: args.marker,
+            }
+        })
     },
     onCameraMove(args) {
     console.log("Camera moving: "+JSON.stringify(args.camera));
@@ -101,35 +106,9 @@ export default {
 
 
 <style scoped>
-Button{
-  color:white;
-}
-.datePicker {
-  /* background-color: rgb(53, 51, 51);
-  color:white; */
-  background-color: white;
-  color: black;
-}
 
 MapView{
   z-index: -10;
 }
-WrapLayout {
-  width: 100%;
-  z-index: 10;
-}
-WrapLayout Button {
-  font-size: 10;
 
-  color:black;
-  width: 33.33333%;
-  height: 80;
-}
-
-TextView {
-  border-bottom-color: transparent;
-  color:white;
-  border-bottom-width: 1;
-  padding: 15;
-}
 </style>

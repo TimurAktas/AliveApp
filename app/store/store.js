@@ -11,18 +11,6 @@ export default new Vuex.Store({
   state: {
       userData: {},
       events: [],
-      benutzerDaten: [
-        {
-          name: "timur",
-          nachname: "aktas",
-          alter: 12
-        },
-        {
-          name: "hans",
-          nachname: "peter",
-          alter: 24
-        }
-      ]
   },
   getters:{
     userData: state => state.userData,
@@ -32,6 +20,13 @@ export default new Vuex.Store({
   mutations: {
     setUserData: (state, payload) => {
       state.userData = payload
+    },
+    setEventData: (state, payload) => {
+      state.events.unshift({
+        from: payload.from,
+        title: payload.title,
+        desc: payload.desc,
+    })
     }
   },
   actions: {
@@ -40,9 +35,8 @@ export default new Vuex.Store({
         .then(user => {
           firestore.firestore().collection("users").where("user_id", "==", user.uid)
           .get()
-          .then(querySnapshot => {
-            querySnapshot.forEach(doc => {
-               console.log("Current user is: ", doc.data())
+          .then(snapshot => {
+            snapshot.forEach(doc => {
                commit('setUserData', doc.data())
             });
           });
@@ -50,9 +44,22 @@ export default new Vuex.Store({
       }) 
       .catch(error => console.log("Trouble in paradise: " + error));
     },
+    loadEvents({commit}){
+      const events = firestore.firestore().collection("events");
+        events.get().then(snapshot =>{
+            snapshot.forEach(doc=>{
+              commit('setEventData', doc.data())
+            })
+        });
+    },
     getstateuserdata(){
       console.log("Store userData -> ", this.state.userData)
-      console.log("Store userData -> ", this.state.benutzerDaten)
+      console.log("Store Events -> ", this.state.events)
+      console.log("EVENTS IN STORE -> ", this.state.events.length)
     },
+    eventInfo(){
+   
+
+    }
   }
 });

@@ -1,5 +1,5 @@
 <template>
-<Page actionBarHidden="true">
+<Page actionBarHidden="true" backgroundColor="#2A3551" >
        <StackLayout>
             <label text="Hier ist die News Page" class="page-name" />
         </StackLayout>
