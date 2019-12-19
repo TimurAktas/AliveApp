@@ -1,5 +1,5 @@
 <template>
-    <StackLayout class="list-group-item">
+    <StackLayout class="list-group-item" @tap="onItemTap">
         <label> Event von {{eventData.from}} </label>
         <label> Event von {{eventData.title}} </label>
         <label> Event von {{eventData.desc}} </label>
@@ -7,13 +7,27 @@
 </template>
 
 <script>
+import EventInfo    from '../../views/EventInfo'
 
 export default {
     props: ['eventData'],
+    components:{
+        EventInfo
+    },
     data(){
         return{
         }
     }, 
+    methods:{
+        onItemTap(){
+            this.$navigateTo(EventInfo, { 
+                frame: "main-root",
+                props: {
+                    event: this.eventData,
+                }
+            })
+        }
+    }
 }
 </script>
 

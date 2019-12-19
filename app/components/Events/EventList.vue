@@ -2,7 +2,7 @@
     <PullToRefresh @refresh="refreshList">
         <ScrollView>
             <StackLayout class="event-list">
-                <EventCard  v-for="(event,index) in events" v-bind:key=index :eventData="event" @itemTap="onItemTap"/>
+                <EventCard  v-for="(event,index) in events" v-bind:key=index :eventData="event"/>
             </StackLayout>
         </ScrollView>
     </PullToRefresh>
@@ -32,15 +32,6 @@ export default {
             pullRefresh.refreshing = false;
         }, 1000);
      },
-     onItemTap(event){
-       console.log(event.item)
-       this.$navigateTo(EventInfo, { 
-            frame: "main-root",
-            props: {
-                event: event.item,
-            }
-        })
-     }
     },
     computed: {
         ...mapGetters(['events'])
