@@ -23,9 +23,9 @@
 
 <script>
 import * as http from "http";
-import * as geolocation from "nativescript-geolocation";
-import { Accuracy } from "ui/enums";
 import * as platform from "platform";
+import * as geolocation from "nativescript-geolocation";
+import { Accuracy } from "tns-core-modules/ui/enums"; // used to describe at what accuracy the location should be get
 import * as decodePolyline from "decode-google-map-polyline";
 import { Position, Marker, Polyline, Bounds } from "nativescript-google-maps-sdk";
 import TimeBar from '../components/Events/TimeBar'
@@ -51,8 +51,11 @@ export default {
       marker: null,
     }
   },
-  created: function() {
+  created() {
     this.allowExecution = true;
+  },
+  mounted(){
+
   },
   methods: {
     locationSelected(args){
@@ -67,7 +70,8 @@ export default {
       
     },
     mapReady(args){
-      
+
+
       console.log("Map ist geladen!!")
       const ref = firebase.firestore().collection("events");
       this.mapView = args.object;

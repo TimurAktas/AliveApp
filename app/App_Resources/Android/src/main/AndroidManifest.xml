@@ -2,7 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
 	package="org.nativescript.application"
 	android:versionCode="10000"
-	android:versionName="1.0">
+	android:versionName="1.0"
+	xmlns:tools="http://schemas.android.com/tools">
 
 	<supports-screens
 		android:smallScreens="true"
@@ -26,8 +27,12 @@
 
 		<!-- Google Maps Api -->
 		<meta-data
+		  	tools:replace="android:value"
             android:name="com.google.android.geo.API_KEY"
-            android:value="@string/nativescript_google_maps_api_key" />
+            android:value="@string/nativescript_google_maps_api_key"
+		/>
+
+
 
 
 		<activity

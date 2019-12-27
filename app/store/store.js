@@ -61,6 +61,9 @@ export default new Vuex.Store({
     eventInfo(){
    
 
+    },
+    createNewEvent(payload){
+
     }
   }
 });

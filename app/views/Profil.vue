@@ -6,6 +6,7 @@
             <label>{{userData.age}}</label>
             <label>{{userData.interests}}</label>
             <Button text="UserData" @tap="currentUser" />
+              <Button text="Logout" @tap="logOut" />
        </StackLayout>
     </Page>
 </template>
@@ -29,7 +30,12 @@ export default {
      },
      currentUser(){
         store.dispatch("getstateuserdata")
-     }
+     },
+      logOut(){
+        console.log("Logged out ---")
+        firebase.logout();
+        setBoolean("LoginCookie", false);
+     },
     },
     computed: {
         ...mapGetters(['userData'])

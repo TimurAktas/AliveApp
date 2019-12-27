@@ -18,6 +18,7 @@ import App from '../App'
 import store from '../store/store'
 import firebase from "nativescript-plugin-firebase"
 import News from '../views/News'
+import {getBoolean,setBoolean} from "tns-core-modules/application-settings";
 
 export default {
     data(){
@@ -32,7 +33,8 @@ export default {
         News
     },
     methods:{
-     userLoginWithEmailandPassword(){
+     userLoginWithEmailandPassword(args){
+         const frames = require("ui/frame");
         console.log(this.email, this.password)
         firebase.login({
             type: firebase.LoginType.PASSWORD,
@@ -42,13 +44,18 @@ export default {
             }
         })
         .then(result => {JSON.stringify(result)
+            setBoolean("LoginCookie", true);
             console.log("Erfolgreich eingeloggt!")
+            frames.topmost().navigate(() => { return App});
+
+
         })
         .catch(error => console.log(error));
      },
      logOut(){
         console.log("Logged out ---")
         firebase.logout();
+        setBoolean("LoginCookie", false);
      },
      registerWithEmailandPassword(){
 

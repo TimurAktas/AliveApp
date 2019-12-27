@@ -1,7 +1,6 @@
 <template lang="html" >
     <Frame id="main-root">
         <Page actionBarHidden="true" backgroundColor="#2A3551">
-
             <BottomNavigation>
                 <TabStrip>
                     <TabStripItem class="tabstripitem">
@@ -46,13 +45,13 @@
 
                 <TabContentItem>
                     <Frame>
-                        <Login />
+                        <News />
                     </Frame>
                 </TabContentItem>
 
                 <TabContentItem>
                     <Frame>
-                    <Profil />
+                        <Profil />
                     </Frame>
                 </TabContentItem>
 
@@ -68,7 +67,6 @@ import Home from './views/Home'
 import NewEvent from './views/NewEvent'
 import News from './views/News'
 import Profil from './views/Profil'
-import Login from './views/Login'
 
 
 export default {
@@ -81,8 +79,7 @@ export default {
     AMap,
     NewEvent,
     News,
-    Profil,
-    Login
+    Profil
   },
 };
 </script>
