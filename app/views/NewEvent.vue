@@ -1,20 +1,32 @@
 <template>
-    <Page actionBarHidden="true" statusBarStyle="light" backgroundColor="#2A3551" >
-        <StackLayout>
-            <label >Titel des Events:</label>
-            <TextField ref="textField" v-model="title" borderBottomWidth="3" borderBottomColor="#cec8c8" padding="0" />
-            <label >Beschreibung:</label>
-	        <TextField ref="textField" v-model="description" borderBottomWidth="3" borderBottomColor="#cec8c8" padding="0" />
-            <label >Event anonym?</label>
+    <Page actionBarHidden="false" statusBarStyle="light" backgroundColor="#2A3551" >
+       <ActionBar title="test">
+        <StackLayout orientation="horizontal"
+            ios:horizontalAlignment="center"
+            android:horizontalAlignment="left">
+            <Label text="<- Event erstellen" class="action-label"></Label>
+        </StackLayout>
+        </ActionBar>
 
-            <label>a{{userData.lastname}}</label>
-            <label>b{{userData.age}}</label>
-            <label>c{{userData.interests}}</label>
-            <Switch checked="false" loaded="onSwitchLoaded" /> 
-            <Button text="Zeige Param" @tap="showParam" />
-            <Button text="Start new Event" @tap="createNewEvent" />
-            <Button text="Wo?" @tap="openModal" />
-            
+
+        <StackLayout>
+            <StackLayout class="test">
+                <label >Titel des Events:</label>
+                <TextField ref="textField" v-model="title" borderBottomWidth="1" borderBottomColor="#cec8c8" padding="0" />
+                <label >Beschreibung:</label>
+                <TextField ref="textField" v-model="description" borderBottomWidth="1" borderBottomColor="#cec8c8" padding="0" />
+            </StackLayout>
+            <ListView for="btn in btns" class="list-group" @itemTap="onItemTap">
+				<v-template>
+					<GridLayout class="list-group-item" rows="*" columns="auto, *">
+						<Label row="0" col="1" :text="btn.text" />
+					</GridLayout>
+				</v-template>
+            </ListView>
+          
+            <Button class="eventButton" text="Zeige Param" @tap="showParam" />
+            <Button class="eventButton" text="Wo?" @tap="openModal" />
+            <Button class="eventButton" text="Start new Event" @tap="createNewEvent(userData)" />
         </StackLayout>
     </Page>
 </template>
@@ -31,24 +43,30 @@ export default {
     },
     data(){
         return{
+            btns: [
+                { text: 'Öffentliche Veranstaltung', icon: '' },
+                { text: 'Kategorie', icon: '' },
+                { text: 'Personen makieren', icon: '' },
+                { text: 'Ort', icon: '' },
+                { text: 'Foto/Video', icon: '' },
+                { text: 'Uhrzeit', icon: '' },
+            ],
             title: null,
             description: null,
             lng: null,
             lat: null,
             anonym: null,
-            lng: null,
-            lat: null,
         }
     },
      components:{
          Modalone
     },
     methods:{
-        createNewEvent(){
+        createNewEvent(userData){
             const ref = firebase.firestore().collection("events");
 
             ref.add({
-            from: "Timur Aktas",
+            from: userData.user_id,
             title: this.title,
             desc: this.description,
             time: Date.now(),
@@ -63,8 +81,13 @@ export default {
         showParam(){
             console.log('STORE USER DATA: ' , userData)
         },
+        onItemTap(){
+            console.log("clicked!")
+        },
         openModal(){
-            this.$showModal(Modalone, {fullscreen: true, props: { id: 14 }})
+            this.$showModal(Modalone, {fullscreen: true, props: { id: 14 },   transition: {
+                name: "slideBottom",
+            }})
             .then(data => console.log("Nachdem Modal geschlossen wurde wird das hier gemacht mit den daten die mitgegeben wurden: -> ", data));
         }
     },
@@ -75,5 +98,16 @@ export default {
 </script>
 
 <style>
+.test{
+    margin-bottom: 50;
+}
+ListView{
+    border-top: 5px solid red;
+    margin-bottom: -200;
 
+}
+.eventButton{
+    background-color: beige;
+    color: red;
+}
 </style>

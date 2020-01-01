@@ -34,7 +34,8 @@ export default {
     },
     methods:{
      userLoginWithEmailandPassword(args){
-         const frames = require("ui/frame");
+        console.log("Ist in Login drin!!!")
+        const frames = require("ui/frame");
         console.log(this.email, this.password)
         firebase.login({
             type: firebase.LoginType.PASSWORD,
@@ -46,9 +47,7 @@ export default {
         .then(result => {JSON.stringify(result)
             setBoolean("LoginCookie", true);
             console.log("Erfolgreich eingeloggt!")
-            frames.topmost().navigate(() => { return App});
-
-
+            this.$navigateTo(App)
         })
         .catch(error => console.log(error));
      },

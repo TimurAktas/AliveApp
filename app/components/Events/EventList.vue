@@ -10,14 +10,12 @@
 
 <script>
 import store          from '../../store/store'
-import EventInfo      from '../../views/EventInfo'
 import EventCard      from '../../components/Events/EventCard'
 import * as firebase  from "nativescript-plugin-firebase/app";
 import { mapGetters } from 'vuex'
 
 export default {
     components:{
-        EventInfo,
         EventCard
     },
     data(){

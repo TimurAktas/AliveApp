@@ -26,6 +26,7 @@
     "nativescript-plugin-firebase": "^10.3.1",
     "nativescript-pulltorefresh": "^2.3.0",
     "nativescript-theme-core": "^2.0.24",
+    "nativescript-ui-autocomplete": "^6.0.0",
     "nativescript-vue": "^2.4.0",
     "node": "^12.13.0",
     "tns-core-modules": "^6.3.2",

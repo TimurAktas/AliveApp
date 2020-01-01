@@ -70,8 +70,6 @@ export default {
       
     },
     mapReady(args){
-
-
       console.log("Map ist geladen!!")
       const ref = firebase.firestore().collection("events");
       this.mapView = args.object;
@@ -92,15 +90,17 @@ export default {
     markerInfoWindowTapped(args){
       console.log(args.marker)
       this.$navigateTo(EventInfo, { 
-            frame: "main-root",
-            props: {
-                event: args.marker,
-            }
-        })
+        props: {
+          event: args.marker,
+        },
+        transition: {
+          name:'fade'
+        },
+      })
     },
     onCameraMove(args) {
-    console.log("Camera moving: "+JSON.stringify(args.camera));
-},
+      console.log("Camera moving: "+JSON.stringify(args.camera));
+    },
     coordinateTapped(args){
       console.log(args)
     }

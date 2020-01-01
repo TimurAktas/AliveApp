@@ -1,5 +1,5 @@
 <template lang="html" >
-    <Frame id="main-root">
+  
         <Page actionBarHidden="true" backgroundColor="#2A3551">
             <BottomNavigation>
                 <TabStrip>
@@ -44,7 +44,7 @@
                 </TabContentItem>
 
                 <TabContentItem>
-                    <Frame>
+                    <Frame id="news-root">
                         <News />
                     </Frame>
                 </TabContentItem>
@@ -57,7 +57,7 @@
 
             </BottomNavigation>
         </Page>
-    </Frame>
+
 </template>
 
 <script>

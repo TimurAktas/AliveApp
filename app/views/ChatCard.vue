@@ -1,18 +1,17 @@
 <template>
     <StackLayout class="list-group-item" @tap="onItemTap">
-        <label> Event von {{eventData.from}} </label>
-        <label> Event von {{eventData.title}} </label>
-        <label> Event von {{eventData.desc}} </label>
+        <label> Event von {{eventReq.from}} </label>
+        <label> Event von {{eventReq.msg}} </label>
+        <label> Event von {{eventReq.time}} </label>
     </StackLayout>
 </template>
 
 <script>
-import EventInfo    from '../../views/EventInfo'
-
+import Privatchat from '../views/PrivatChat'
 export default {
-    props: ['eventData'],
+    props: ['eventReq'],
     components:{
-        EventInfo
+        Privatchat
     },
     data(){
         return{
@@ -20,9 +19,9 @@ export default {
     }, 
     methods:{
         onItemTap(){
-            this.$navigateTo(EventInfo, { 
+            this.$navigateTo(Privatchat, { 
                 props: {
-                    event: this.eventData,
+                    eventReqData: this.eventReq,
                 },
                 transition: {
                     name:'fade'
@@ -38,8 +37,9 @@ export default {
 .list-group-item{
     padding: 10;
     height: 130;
-    margin: 10 5 0;
-    border-radius: 10% 10% 10% 10%;
-    background: linear-gradient(to left,#3B4568, #495676);
+    border-bottom-width: 0.4;
+    border-bottom-color: black;
 }
+
+
 </style>

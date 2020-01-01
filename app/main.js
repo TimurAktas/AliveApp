@@ -3,7 +3,8 @@ import App from './App'
 import Login from './views/Login'
 import store from './store/store'
 import {getBoolean,setBoolean,getNumber,setNumber,getString,setString,hasKey,remove,clear} from "tns-core-modules/application-settings";
-
+import RadAutoComplete from "nativescript-ui-autocomplete/vue";
+Vue.use(RadAutoComplete);
 // Prints Vue logs when --env.production is *NOT* set while building
 Vue.config.silent = false
 
@@ -25,6 +26,7 @@ application.on(application.launchEvent, (args) => {
       if(data.loggedIn){
         store.dispatch("initUserData")
         store.dispatch("loadEvents")
+        store.dispatch("getEventRequests");
       }
     }
   })
@@ -42,7 +44,7 @@ application.on(application.launchEvent, (args) => {
 
 new Vue({
   store,
-  render: h => h(getBoolean("LoginCookie")? App : Login)
+  render: h => h('frame', [h(getBoolean("LoginCookie")? App : Login)])
 }).$start()
 
 

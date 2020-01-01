@@ -2,6 +2,7 @@
     <Page actionBarHidden="true" backgroundColor="#2A3551" >
        <StackLayout >
             <label>Profil von {{userData.firstname}}</label>
+            <Image :src="`~/assets/images/`+userData.profilpicture" class="-thumb img-circle"></Image>
             <label>{{userData.lastname}}</label>
             <label>{{userData.age}}</label>
             <label>{{userData.interests}}</label>
@@ -15,6 +16,7 @@
 import Login from './Login'
 import store from '../store/store'
 import { mapGetters } from 'vuex'
+import * as firebase from "nativescript-plugin-firebase"
 
 export default {
     created(){
@@ -24,17 +26,14 @@ export default {
         Login,
     },
     methods:{
-     logout(){
-        store.dispatch("logout")
-        this.$navigateTo(Login);
-     },
      currentUser(){
         store.dispatch("getstateuserdata")
      },
       logOut(){
         console.log("Logged out ---")
         firebase.logout();
-        setBoolean("LoginCookie", false);
+        this.$navigateTo(Login, {clearHistory: true})
+        store.dispatch("userLogout")
      },
     },
     computed: {
