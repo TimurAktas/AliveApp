@@ -34,6 +34,7 @@ export default new Vuex.Store({
         from: payload.from,
         title: payload.title,
         desc: payload.desc,
+        userrequestids: payload.userrequestids,
       })
     },
     setEventRequests: (state, payload) => {
@@ -68,6 +69,7 @@ export default new Vuex.Store({
       const events = firestore.firestore().collection("events");
         events.get().then(snapshot =>{
             snapshot.forEach(doc=>{
+              console.log(doc.data())
               commit('setEventData', doc.data())
             })
         });

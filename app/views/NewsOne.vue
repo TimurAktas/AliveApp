@@ -2,7 +2,7 @@
     <ScrollView>
         <StackLayout>
             <ChatCard  v-for="(eventReq,index) in eventRequests" v-bind:key=index :eventReq="eventReq"/>
-             <Button text="LoadMessages" @tap="ConsoleEvent(eventRequests)" />
+             <Button class="btn" text="LoadMessages" @tap="ConsoleEvent(eventRequests)" />
         </StackLayout>
     </ScrollView>
 </template>
@@ -47,5 +47,8 @@ export default {
 /* StackLayout .list-group-item{
     background-color: red;
 } */
-
+.btn{
+    background-color: gray;
+    width: 200;
+}
 </style>

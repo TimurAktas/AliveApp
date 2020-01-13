@@ -1,6 +1,5 @@
 <template>
   <Page actionBarHidden="true">
-    <GridLayout columns="*" rows="*">
       <AbsoluteLayout>
         <TimeBar />
         <MapView
@@ -17,7 +16,6 @@
           @onCameraMove="onCameraMove"
         />
       </AbsoluteLayout>
-    </GridLayout>
   </Page>
 </template>
 
@@ -110,7 +108,6 @@ export default {
 
 
 <style scoped>
-
 MapView{
   z-index: -10;
 }

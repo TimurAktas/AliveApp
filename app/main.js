@@ -17,8 +17,6 @@ var firebase = require("nativescript-plugin-firebase");
 const application = require("tns-core-modules/application");
 
 
-
-
 application.on(application.launchEvent, (args) => {
   firebase.init({
     onAuthStateChanged: data => { // optional but useful to immediately re-logon the user when they re-visit your app

@@ -29,7 +29,7 @@
 
     const autocompleteModule = require("nativescript-ui-autocomplete");
     const ObservableArray = require("tns-core-modules/data/observable-array").ObservableArray;
-
+    
     const countries = [
         "Albania",
         "Andorra",
@@ -61,7 +61,8 @@
         "Sweden",
         "Turkey",
         "Ukraine",
-        "USA"
+        "USA",
+        "Timur"
     ];
 
     const autocompleteCountries = new ObservableArray();
@@ -70,11 +71,12 @@
             new autocompleteModule.TokenModel(country, undefined)
         );
     });
-
+    autocompleteCountries.showCloseButton = false;
     export default {
         data() {
             return {
                 autocompleteCountries: autocompleteCountries,
+                Follower: [],
             };
         },
         methods:{
