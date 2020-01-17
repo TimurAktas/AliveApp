@@ -75,7 +75,7 @@ export default new Vuex.Store({
         });
     },
     sendRequestToEvent({commit}, payload){
-      console.log("--------------------- msg.event " , payload.event.from)
+      console.log("-------------------- msg.event " , payload.event.from)
       const eventRequestCollection = firestore.firestore().collection("eventrequests");
 
       eventRequestCollection.add({

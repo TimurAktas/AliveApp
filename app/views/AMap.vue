@@ -1,7 +1,6 @@
 <template>
   <Page actionBarHidden="true">
       <AbsoluteLayout>
-        <TimeBar />
         <MapView
           width="100%"
           height="100%"

@@ -50,7 +50,7 @@
 
             <TabContentItem>
                 <Frame>
-                    <Profil />
+                   <News />
                 </Frame>
             </TabContentItem>
 
@@ -93,14 +93,14 @@ export default {
 
 Tabs TabStripItem,
 BottomNavigation TabStripItem {
-    background-color: #414B6E;
+    background-color: #252C48;
     color: white;
 }
 
 Tabs TabStripItem:active,
 BottomNavigation TabStripItem:active {
-    background-color: #5F6A9A;
-    color: gray;
+    background-color: #252C48;
+    color: rgb(161, 47, 226);
 }
 
 

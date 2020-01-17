@@ -2,7 +2,7 @@
 <Page actionBarHidden="false" backgroundColor="#2A3551" >    
      <StackLayout class="p-20">
             <StackLayout class="input-field">
-                <RadAutoCompleteTextView :items="autocompleteCountries"
+                <RadAutoCompleteTextView class="radAuto" :items="autocompleteCountries"
                     suggestMode="Suggest" displayMode="Tokens">
                     <SuggestionView ~suggestionView>
                         <StackLayout v-suggestionItemTemplate orientation="vertical">
@@ -98,4 +98,9 @@
     .description-label {
         margin-bottom: 15;
     }
+    .radAuto{
+
+    }
+
+    
 </style>

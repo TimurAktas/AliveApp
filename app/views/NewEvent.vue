@@ -135,13 +135,9 @@ ListView{
 }
 
 .newEventMenue{
-    border-color: gray;
-    border-style: solid;
-    border-width: 1px;
     padding: 10;
     margin: 10 5 0;
     border-radius: 10% 10% 10% 10%;
     background: linear-gradient(to left,#3B4568, #495676);
-    box-shadow: 10px 5px 5px rgb(184, 181, 181);
 }
 </style>
